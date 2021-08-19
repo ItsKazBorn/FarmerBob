@@ -46,8 +46,23 @@ public class FarmerBob {
     public int getMaxPocketGold() {
         return maxPocketGold;
     }
-
     public State CheckState () {
         return state;
+    }
+
+    public void Mine () {
+
+    }
+    
+    public void Rest () {
+
+    }
+
+    public void DepositGold () {
+
+    }
+
+    public void Drink () {
+
     }
 }
