@@ -3,8 +3,6 @@ public class Game {
     public static void main(String[] args) {
         FarmerBob bob = new FarmerBob();
 
-        int action = 4;
-
         while (true)
         {
             switch (bob.state)
