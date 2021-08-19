@@ -12,7 +12,7 @@ public class Game {
                 case GoHomeAndSleepTilRested:
                     bob.Rest();
                     bob.PrintStats();
-                    System.out.println("Acabei de acordar, estou disposto novamente para mais um dia de trabalho!");
+                    System.out.println("Estou dormindo e pensando no meu santo dinheirinho!");
                     break;
                 case EnterMineAndDigForNugget:
                     bob.Mine();
