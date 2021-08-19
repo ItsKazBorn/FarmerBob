@@ -59,7 +59,7 @@ public class FarmerBob {
         fatigue += 1;
         thirst -= 5;
         if (thirst <= 0) { ChangeState(State.QuenchThirst); }
-        if (pocketGold >= maxPocketGold) { ChangeState(State.VisitBankAndDepositGold); }
+        if (pocketGold >= maxPocketGold || fatigue >= maxFatigue) { ChangeState(State.VisitBankAndDepositGold); }
     }
 
     public void Rest () {
@@ -68,8 +68,8 @@ public class FarmerBob {
     }
 
     public void DepositGold () {
-        pocketGold -= 10;
-        bankMoney += 10;
+        pocketGold -= 1;
+        bankMoney += 1;
         if (pocketGold <= 0)  {
             if (fatigue < maxFatigue) {
                 ChangeState(State.EnterMineAndDigForNugget);
@@ -82,5 +82,14 @@ public class FarmerBob {
         thirst += 20;
         pocketGold -= 1;
         if (thirst >= maxThirst) { ChangeState(State.EnterMineAndDigForNugget); }
+    }
+
+    public void PrintStats () {
+        //System.out.println(">>>>>--------> STATS <--------<<<<<");
+        System.out.println("Bank Money:   " + bankMoney);
+        System.out.println("Pocket Money: " + pocketGold + " / " + maxPocketGold);
+        System.out.println("Thirst:       " + thirst +  " / " + maxThirst);
+        System.out.println("Fatigue:      " + fatigue + " / " + maxFatigue);
+        System.out.println("====================================");
     }
 }
