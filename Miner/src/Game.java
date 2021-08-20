@@ -1,6 +1,6 @@
 public class Game {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         FarmerBob bob = new FarmerBob();
 
         while (true)
@@ -27,6 +27,7 @@ public class Game {
                     bob.PrintStats();
                     System.out.println("Uma pedra mineirada para mim, uma moeda para o banco.");
             }
+            Thread.sleep(1000);
         }
     }
 }
