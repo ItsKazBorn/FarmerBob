@@ -10,6 +10,7 @@ public class FarmerBob {
 
     public State state = State.GoHomeAndSleepTilRested;
 
+    //region Farmer Bob Stats
     private int thirst = 100;
     private int maxThirst = 100;
 
@@ -19,7 +20,9 @@ public class FarmerBob {
     private int bankMoney = 0;
     private int pocketGold = 0;
     private int maxPocketGold = 50;
+    //endregion
 
+    //region Getters & Setters
     public int getThirst() {
         return thirst;
     }
@@ -47,6 +50,8 @@ public class FarmerBob {
     public int getMaxPocketGold() {
         return maxPocketGold;
     }
+    //endregion
+
     public State CheckState () {
         return state;
     }
@@ -54,6 +59,7 @@ public class FarmerBob {
         state = newState;
     }
 
+    //region Actions
     public void Mine () {
         pocketGold += 1;
         fatigue += 1;
@@ -83,6 +89,7 @@ public class FarmerBob {
         pocketGold -= 1;
         if (thirst >= maxThirst) { ChangeState(State.EnterMineAndDigForNugget); }
     }
+    //endregion
 
     public void PrintStats () {
         //System.out.println(">>>>>--------> STATS <--------<<<<<");
