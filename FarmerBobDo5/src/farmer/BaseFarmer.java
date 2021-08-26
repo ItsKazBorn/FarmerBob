@@ -12,18 +12,27 @@ public class BaseFarmer {
     private final float MaxNuggets = 50;
     private final float MinWealthy = 20;
     private final float MaxWealthy = 50;
+    private final float MinHappiness = 5;
+    private final float MaxHappiness = 30;
+    private final float MinSadness = 0;
+    private final float MaxSadness = 30;
     public float currentMoney = 0;
     private float Nuggets;
     private float Thirsty;
     private float Hunger;
     private float Wealthy;
+    private float Sadness;
+    private float Hapiness;
+
     public BaseFarmer() {
-        this(0, 50, 50);
+        this(0, 50, 50, 0, 30);
     }
-    public BaseFarmer(float nuggets, float thirsty, float wealthy) {
+    public BaseFarmer(float nuggets, float thirsty, float wealthy, float sadness, float hapiness) {
         Nuggets = nuggets;
         Thirsty = thirsty;
         Wealthy = wealthy;
+        Sadness = sadness;
+        Hapiness = hapiness;
     }
 
     private BaseFarmer addNuggets(float value) {
@@ -77,12 +86,38 @@ public class BaseFarmer {
         return false;
     }
 
+    private BaseFarmer addSadness(float value) {
+        var newValue = Sadness+value;
+        if (newValue>=MaxSadness){
+            newValue = MaxSadness;
+        }else if (newValue<=MinSadness){
+            newValue = MinSadness;
+        }
+        Sadness = newValue;
+        return this;
+    }
+
+    private BaseFarmer addHapiness(float value) {
+        var newValue = Hapiness+value;
+        if (newValue>=MaxHappiness){
+            newValue = MaxHappiness;
+        }else if (newValue<=MinHappiness){
+            newValue = MinHappiness;
+        }
+        Hapiness = newValue;
+        return this;
+    }
+
     public boolean isFull () { return Hunger >= MaxHunger; }
 
     public boolean isHungry() { return Hunger <= MinHunger; }
 
     public boolean imFull() {
         return Thirsty >= MaxThirsty;
+    }
+
+    public boolean isSad() {
+        return Sadness >= MaxSadness;
     }
 
     public boolean isThirsty() {
@@ -102,6 +137,7 @@ public class BaseFarmer {
     }
 
     public BaseFarmer drink() {
+        addSadness(4);
         if (buyDrink(3f))
             return printState();
         System.out.println("Não tenho dinheiro :C");

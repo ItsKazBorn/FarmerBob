@@ -7,6 +7,8 @@ public class GoHomeAndSleepTilRested implements State{
     @Override
     public State runState(BaseFarmer baseFarmer) {
         System.out.println(ConsoleColors.CYAN_BOLD +"Estou em casa");
+        if (baseFarmer.isSad())
+            
         if (baseFarmer.isRested())
             return new EnterMineAndDigForNugget();
         baseFarmer.sleep();
