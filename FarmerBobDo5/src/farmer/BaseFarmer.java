@@ -20,13 +20,14 @@ public class BaseFarmer {
     private float Happiness;
 
     public BaseFarmer() {
-        this(0, 50, 50, 30);
+        this(0, 50, 50, 50, 0, 30);
     }
-    public BaseFarmer(float nuggets, float thirsty, float wealthy, float hapiness) {
+    public BaseFarmer(float nuggets, float thirsty, float hunger, float wealthy, float sadness, float happiness) {
         Nuggets = nuggets;
         Thirsty = thirsty;
+        Hunger = hunger;
         Wealthy = wealthy;
-        Happiness = hapiness;
+        Happiness = happiness;
     }
 
     private BaseFarmer addNuggets(float value) {
