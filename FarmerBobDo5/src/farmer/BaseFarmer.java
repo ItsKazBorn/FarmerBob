@@ -7,12 +7,15 @@ import java.util.SortedMap;
 public class BaseFarmer {
     private final float MinThirsty = 10;
     private final float MaxThirsty = 50;
+    private final float MinHunger  = 10;
+    private final float MaxHunger  = 50;
     private final float MaxNuggets = 50;
     private final float MinWealthy = 20;
     private final float MaxWealthy = 50;
     public float currentMoney = 0;
     private float Nuggets;
     private float Thirsty;
+    private float Hunger;
     private float Wealthy;
     public BaseFarmer() {
         this(0, 50, 50);
@@ -45,6 +48,16 @@ public class BaseFarmer {
         return this;
     }
 
+    private BaseFarmer addHunger (float value) {
+        var newValue = Hunger+value;
+        if (newValue >= MaxHunger)
+            newValue = MaxHunger;
+        else if (newValue <= MinHunger)
+            newValue = MinHunger;
+        Hunger = newValue;
+        return this;
+    }
+
     private BaseFarmer addThirsty(float value) {
         var newValue = Thirsty+value;
         if (newValue>=MaxThirsty){
@@ -55,6 +68,8 @@ public class BaseFarmer {
         Thirsty = newValue;
         return this;
     }
+
+    public boolean isFull () { return Hunger >= MaxHunger; }
 
     public boolean imFull() {
         return Thirsty >= MaxThirsty;
@@ -82,6 +97,25 @@ public class BaseFarmer {
         System.out.println("Não tenho dinheiro :C");
         System.exit(1);
         return this;
+    }
+
+    public BaseFarmer eat () {
+        if (buyFood(3f))
+            return printState();
+        System.out.println("Não tenho dinheiro :C");
+        System.exit(1);
+        return this;
+    }
+
+    public boolean buyFood(float valueFood) {
+        if (currentMoney >= valueFood) {
+            addCurrentMoney(-valueFood).addHunger(5);
+            return true;
+        } else if (Nuggets >= valueFood) {
+            addNuggets(-valueFood).addHunger(5);
+            return true;
+        }
+        return false;
     }
 
     private boolean buyDrink(float valueDrink) {

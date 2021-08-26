@@ -21,5 +21,4 @@ public class Game {
             currentState = currentState.runState(baseFarmer);
         }
     }
-
 }
