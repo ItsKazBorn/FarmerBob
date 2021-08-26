@@ -9,8 +9,8 @@ public class EnterMineAndDigForNugget implements State{
         System.out.println(ConsoleColors.RED_BOLD+"Estou em na mina");
         if (baseFarmer.isPocketFull() || baseFarmer.isWealthy())
             return new VisitBankAndDepositGold();
-        if (baseFarmer.isThirsty())
-            return new QuenchThirst();
+        if (baseFarmer.isThirsty() || baseFarmer.isHungry())
+            return new VisitBankAndAskForMoney();
         baseFarmer.mining();
         return this;
     }

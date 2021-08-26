@@ -69,7 +69,17 @@ public class BaseFarmer {
         return this;
     }
 
+    public boolean hasMoney (float amount) {
+        if (currentMoney >= amount)
+            return true;
+        else if (Nuggets >= amount)
+            return true;
+        return false;
+    }
+
     public boolean isFull () { return Hunger >= MaxHunger; }
+
+    public boolean isHungry() { return Hunger <= MinHunger; }
 
     public boolean imFull() {
         return Thirsty >= MaxThirsty;
@@ -147,6 +157,8 @@ public class BaseFarmer {
         return addCurrentMoney(Nuggets).addNuggets(-Nuggets).printState();
     }
 
+    public BaseFarmer borrowMoney (float amount) { return addCurrentMoney(-amount).printState(); }
+
     private BaseFarmer printState() {
         System.out.println(this);
         return this;
@@ -157,6 +169,8 @@ public class BaseFarmer {
         return ConsoleColors.BLACK_BOLD+"{" +
                 "Nuggets=" + Nuggets +
                 ", Thirsty=" + Thirsty +
+                ", Hunger =" + Hunger +
+                ", Happy =" + Hunger +
                 ", Wealthy=" + Wealthy +
                 ", currentMoney=" + currentMoney +
                 "}";
