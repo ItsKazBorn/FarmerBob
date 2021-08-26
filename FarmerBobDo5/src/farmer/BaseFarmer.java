@@ -13,6 +13,7 @@ public class BaseFarmer {
     private final float MinHappiness = 5;
     private final float MaxHappiness = 30;
     public float currentMoney = 0;
+    public float borrowedMoney = 0;
     private float Nuggets;
     private float Thirsty;
     private float Hunger;
@@ -124,6 +125,8 @@ public class BaseFarmer {
         return Wealthy >= MaxWealthy;
     }
 
+    public boolean owesMoney () { return borrowedMoney > 0; }
+
     public BaseFarmer drink() {
         if (buyDrink(3f))
             return printState();
@@ -169,20 +172,30 @@ public class BaseFarmer {
         return this;
     }
 
+    private BaseFarmer addBorrowedMoney(float value) {
+        borrowedMoney += value;
+        currentMoney += value;
+        return this;
+    }
+
     public BaseFarmer mining() {
         return addThirsty(-2.5f).addHappiness(-6).addNuggets(3f).addWealthy(-1f).printState();
     }
 
     public BaseFarmer sleep() {
-
         return addWealthy(3f).printState();
     }
 
     public BaseFarmer deposityMoney() {
+        if (owesMoney())
+            if (borrowedMoney <= Nuggets)
+                addCurrentMoney(borrowedMoney).addNuggets(-borrowedMoney).addBorrowedMoney(-borrowedMoney);
+            else
+                addCurrentMoney(Nuggets).addNuggets(-Nuggets).addBorrowedMoney(-Nuggets);
         return addCurrentMoney(Nuggets).addNuggets(-Nuggets).printState();
     }
 
-    public BaseFarmer borrowMoney (float amount) { return addCurrentMoney(-amount).printState(); }
+    public BaseFarmer borrowMoney (float amount) { return addBorrowedMoney(amount).printState(); }
 
     private BaseFarmer printState() {
         System.out.println(this);
@@ -195,9 +208,10 @@ public class BaseFarmer {
                 "Nuggets=" + Nuggets +
                 ", Thirsty=" + Thirsty +
                 ", Hunger =" + Hunger +
-                ", Happy =" + Hunger +
+                ", Happy =" + Happiness +
                 ", Wealthy=" + Wealthy +
-                ", currentMoney=" + currentMoney +
+                ", currentMoney =" + currentMoney +
+                ", borrowedMoney=" + borrowedMoney +
                 "}";
     }
 
