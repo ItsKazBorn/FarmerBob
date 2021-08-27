@@ -8,10 +8,16 @@ public class VisitBankAndDepositGold implements State {
     }
 
     public void execute (Farmer farmer) {
+        System.out.println("Today I deposited " + farmer.getPocketMoney() + " nuggets");
+        farmer.depositGold();
 
+        if (farmer.isTired())
+            farmer.changeState(new GoHomeAndSleepTilRested());
+        else
+            farmer.changeState(new EnterMineAndDigForNugget());
     }
 
     public void exit (Farmer farmer) {
-        System.out.println("Thanks again for securing my gold!");
+        System.out.println("Thanks again for keeping my gold safe!");
     }
 }

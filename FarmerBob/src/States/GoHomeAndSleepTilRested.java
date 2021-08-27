@@ -8,7 +8,7 @@ public class GoHomeAndSleepTilRested implements State {
     }
 
     public void execute (Farmer farmer) {
-
+        
     }
 
     public void exit (Farmer farmer) {

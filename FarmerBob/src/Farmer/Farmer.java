@@ -16,6 +16,8 @@ public class Farmer {
     private int BankMoney = 0;
     private int PocketMoney = 0;
     private int MaxPocketMoney = 50;
+
+    public int getPocketMoney() { return PocketMoney; }
     // endregion
 
     public void changeState(State newState) {
@@ -39,6 +41,11 @@ public class Farmer {
 
     // region adders
     public void addNugget (int value) { PocketMoney += value; }
+
+    public void depositGold () {
+        BankMoney += PocketMoney;
+        addNugget(-PocketMoney);
+    }
 
     public void addThirst (int value) {
         var newValue = Thirst + value;
