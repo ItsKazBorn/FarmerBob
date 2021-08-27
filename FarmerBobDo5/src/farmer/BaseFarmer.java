@@ -177,6 +177,10 @@ public class BaseFarmer {
         return addWealthy(3f).printState();
     }
 
+    public BaseFarmer haveFun(){
+        return addHappiness(5).printState();
+    }
+
     public BaseFarmer deposityMoney() {
         return addCurrentMoney(Nuggets).addNuggets(-Nuggets).printState();
     }
