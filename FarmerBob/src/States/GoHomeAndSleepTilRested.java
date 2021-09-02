@@ -8,7 +8,12 @@ public class GoHomeAndSleepTilRested implements State {
     }
 
     public void execute (Farmer farmer) {
-        
+        System.out.println("zzzzzzzzzz");
+
+        farmer.addFatigue(-5);
+
+        if(farmer.isRested())
+            farmer.changeState(new EnterMineAndDigForNugget());
     }
 
     public void exit (Farmer farmer) {

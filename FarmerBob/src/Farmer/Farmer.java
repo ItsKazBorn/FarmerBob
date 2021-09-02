@@ -1,7 +1,6 @@
 package Farmer;
 import States.State;
 
-
 public class Farmer {
 
     // region Farmer Stats
