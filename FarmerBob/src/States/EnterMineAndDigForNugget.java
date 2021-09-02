@@ -26,7 +26,7 @@ public class EnterMineAndDigForNugget implements State {
         farmer.addThirst(5);
 
         // Check for New State
-        if (farmer.isPocketFull())
+        if (farmer.isPocketFull() || farmer.isTired())
             farmer.changeState(new VisitBankAndDepositGold());
 
         if (farmer.isThirsty())
