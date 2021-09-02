@@ -3,9 +3,10 @@ import States.GoHomeAndSleepTilRested;
 import States.State;
 
 public class Farmer {
-
     // region Farmer Stats
-    private State currentState = new GoHomeAndSleepTilRested();
+    private State currentState;
+
+    private String Name;
 
     private int Thirst = 0;
     private int MaxThirst = 100;
@@ -17,8 +18,15 @@ public class Farmer {
     private int PocketMoney = 0;
     private int MaxPocketMoney = 50;
 
+    public String getName() { return Name; }
     public int getPocketMoney() { return PocketMoney; }
     // endregion
+
+    public Farmer(String name, State currentState) {
+        this.Name = name;
+        this.currentState = currentState;
+        currentState.enter(this);
+    }
 
     public void changeState(State newState) {
         currentState.exit(this);
