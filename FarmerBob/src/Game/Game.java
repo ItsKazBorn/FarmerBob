@@ -2,6 +2,7 @@ package Game;
 
 import Farmer.Farmer;
 import States.GoHomeAndSleepTilRested;
+import States.WalkAroundTheFarm;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game();
         Farmer bob = new Farmer("Bob", new GoHomeAndSleepTilRested());
-        Farmer billy = new Farmer("Billy", new GoHomeAndSleepTilRested());
+        Farmer billy = new Farmer("Billy", new WalkAroundTheFarm());
 
         ArrayList<Farmer> farmers = new ArrayList();
         farmers.add(bob);
