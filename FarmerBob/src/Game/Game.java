@@ -11,6 +11,11 @@ public class Game {
 
     public void playGame (Farmer farmer) {
         while (true) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             farmer.runCurrentState();
         }
     }

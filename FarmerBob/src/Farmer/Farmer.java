@@ -1,10 +1,11 @@
 package Farmer;
+import States.GoHomeAndSleepTilRested;
 import States.State;
 
 public class Farmer {
 
     // region Farmer Stats
-    private State currentState;
+    private State currentState = new GoHomeAndSleepTilRested();
 
     private int Thirst = 0;
     private int MaxThirst = 100;
