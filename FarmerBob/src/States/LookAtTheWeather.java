@@ -6,6 +6,16 @@ import java.util.Random;
 
 public class LookAtTheWeather implements State {
 
+    private static LookAtTheWeather instance = null;
+
+    private LookAtTheWeather() { }
+
+    public static LookAtTheWeather getInstance() {
+        if (instance == null)
+            instance = new LookAtTheWeather();
+        return instance;
+    }
+
     @Override
     public void enter(Farmer farmer) {
         System.out.println("Time to rest and look at the sky...");
@@ -18,7 +28,7 @@ public class LookAtTheWeather implements State {
         Random r = new Random();
         int rand = r.nextInt(4);
         if (rand == 1)
-            farmer.changeState(new WalkAroundTheFarm());
+            farmer.changeState(WalkAroundTheFarm.getInstance());
     }
 
     @Override

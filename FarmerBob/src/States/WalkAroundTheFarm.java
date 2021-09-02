@@ -6,6 +6,16 @@ import java.util.Random;
 
 public class WalkAroundTheFarm implements State {
 
+    private static WalkAroundTheFarm instance = null;
+
+    private WalkAroundTheFarm () { }
+
+    public static WalkAroundTheFarm getInstance () {
+        if (instance == null)
+            instance = new WalkAroundTheFarm();
+        return instance;
+    }
+
     @Override
     public void enter(Farmer farmer) {
         System.out.println("Let's have a walk around");
@@ -18,7 +28,7 @@ public class WalkAroundTheFarm implements State {
         Random r = new Random();
         int rand = r.nextInt(4);
         if (rand <= 3)
-            farmer.changeState(new LookAtTheWeather());
+            farmer.changeState(LookAtTheWeather.getInstance());
     }
 
     @Override

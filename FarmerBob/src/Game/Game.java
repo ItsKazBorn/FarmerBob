@@ -10,7 +10,7 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game();
         Farmer bob = new Farmer("Bob", new GoHomeAndSleepTilRested());
-        Farmer billy = new Farmer("Billy", new WalkAroundTheFarm());
+        Farmer billy = new Farmer("Billy", WalkAroundTheFarm.getInstance());
 
         ArrayList<Farmer> farmers = new ArrayList();
         farmers.add(bob);
