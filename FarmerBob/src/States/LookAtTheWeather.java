@@ -18,12 +18,12 @@ public class LookAtTheWeather implements State {
 
     @Override
     public void enter(Farmer farmer) {
-        System.out.println("Time to rest and look at the sky...");
+        System.out.println(farmer.getName() + " says: " + "Time to rest and look at the sky...");
     }
 
     @Override
     public void execute(Farmer farmer) {
-        System.out.println("The sky is pretty today!");
+        System.out.println(farmer.getName() + " says: " + "The sky is pretty today!");
 
         Random r = new Random();
         int rand = r.nextInt(4);
@@ -33,6 +33,6 @@ public class LookAtTheWeather implements State {
 
     @Override
     public void exit(Farmer farmer) {
-        System.out.println("That's enough looking for now");
+        System.out.println(farmer.getName() + " says: " + "That's enough looking for now");
     }
 }

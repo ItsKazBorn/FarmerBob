@@ -18,12 +18,12 @@ public class WalkAroundTheFarm implements State {
 
     @Override
     public void enter(Farmer farmer) {
-        System.out.println("Let's have a walk around");
+        System.out.println(farmer.getName() + " says: " + "Let's have a walk around");
     }
 
     @Override
     public void execute(Farmer farmer) {
-        System.out.println("Walking, walking...");
+        System.out.println(farmer.getName() + " says: " + "Walking, walking...");
 
         Random r = new Random();
         int rand = r.nextInt(4);
@@ -33,6 +33,6 @@ public class WalkAroundTheFarm implements State {
 
     @Override
     public void exit(Farmer farmer) {
-        System.out.println("I am tired of walking");
+        System.out.println(farmer.getName() + " says: " + "I am tired of walking");
     }
 }
