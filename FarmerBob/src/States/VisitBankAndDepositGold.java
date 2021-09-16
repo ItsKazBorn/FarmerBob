@@ -1,8 +1,7 @@
 package States;
-
 import Farmer.Farmer;
 
-public class VisitBankAndDepositGold implements State {
+public class VisitBankAndDepositGold implements State<Farmer> {
 
     private static VisitBankAndDepositGold instance = null;
 

@@ -1,10 +1,8 @@
 package States;
-
 import Farmer.Farmer;
-
 import java.util.Random;
 
-public class EnterMineAndDigForNugget implements State {
+public class EnterMineAndDigForNugget implements State<Farmer> {
 
     private static EnterMineAndDigForNugget instance = null;
 

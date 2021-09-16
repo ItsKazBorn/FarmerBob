@@ -2,10 +2,10 @@ package States;
 
 import Farmer.Farmer;
 
-public interface State {
-    public void enter (Farmer farmer);
+public interface State<NPC> {
+    public void enter (NPC f);
 
-    public void execute(Farmer farmer);
+    public void execute(NPC f);
 
-    public void exit (Farmer farmer);
+    public void exit (NPC f);
 }

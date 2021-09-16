@@ -1,8 +1,7 @@
 package States;
-
 import Farmer.Farmer;
 
-public class GoHomeAndSleepTilRested implements State {
+public class GoHomeAndSleepTilRested implements State<Farmer> {
 
     private static GoHomeAndSleepTilRested instance = null;
 

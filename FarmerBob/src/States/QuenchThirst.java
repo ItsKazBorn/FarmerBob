@@ -1,8 +1,7 @@
 package States;
-
 import Farmer.Farmer;
 
-public class QuenchThirst implements State {
+public class QuenchThirst implements State<Farmer> {
 
     private static QuenchThirst instance = null;
 
