@@ -1,10 +1,8 @@
 package States;
-
 import Farmer.Farmer;
-
 import java.util.Random;
 
-public class LookAtTheWeather implements State {
+public class LookAtTheWeather implements State<Farmer> {
 
     private static LookAtTheWeather instance = null;
 

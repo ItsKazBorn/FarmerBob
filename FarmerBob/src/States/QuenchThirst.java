@@ -1,8 +1,7 @@
 package States;
-
 import Farmer.Farmer;
 
-public class QuenchThirst implements State {
+public class QuenchThirst implements State<Farmer> {
     public void enter(Farmer Farmer) {
         System.out.println("Getting thirst out here... time to hit the bar!");
     }

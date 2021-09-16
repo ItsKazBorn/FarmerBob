@@ -1,8 +1,7 @@
 package States;
-
 import Farmer.Farmer;
 
-public class GoHomeAndSleepTilRested implements State {
+public class GoHomeAndSleepTilRested implements State<Farmer> {
     public void enter(Farmer Farmer) {
         System.out.println("What a day! Time to hit the hay!");
     }

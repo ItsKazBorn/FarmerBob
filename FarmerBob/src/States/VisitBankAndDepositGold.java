@@ -1,8 +1,7 @@
 package States;
-
 import Farmer.Farmer;
 
-public class VisitBankAndDepositGold implements State {
+public class VisitBankAndDepositGold implements State<Farmer> {
     public void enter(Farmer Farmer) {
         System.out.println("Let's save these nuggets in the bank...");
     }
