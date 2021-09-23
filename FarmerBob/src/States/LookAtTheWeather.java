@@ -26,7 +26,7 @@ public class LookAtTheWeather implements State<Farmer> {
         Random r = new Random();
         int rand = r.nextInt(4);
         if (rand == 1)
-            farmer.changeState(WalkAroundTheFarm.getInstance());
+            farmer.getStateMachine().changeState(WalkAroundTheFarm.getInstance());
     }
 
     @Override

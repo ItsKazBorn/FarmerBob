@@ -23,7 +23,7 @@ public class QuenchThirst implements State<Farmer> {
         farmer.addThirst(-20);
 
         if (farmer.isQuenched())
-            farmer.changeState(EnterMineAndDigForNugget.getInstance());
+            farmer.getStateMachine().changeState(EnterMineAndDigForNugget.getInstance());
     }
 
     public void exit (Farmer farmer) {

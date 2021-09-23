@@ -26,7 +26,7 @@ public class WalkAroundTheFarm implements State<Farmer> {
         Random r = new Random();
         int rand = r.nextInt(4);
         if (rand <= 3)
-            farmer.changeState(LookAtTheWeather.getInstance());
+            farmer.getStateMachine().changeState(LookAtTheWeather.getInstance());
     }
 
     @Override

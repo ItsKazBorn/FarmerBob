@@ -1,10 +1,13 @@
 package Farmer;
+import Global.FarmerGlobalState;
+import States.EnterMineAndDigForNugget;
 import States.GoHomeAndSleepTilRested;
 import States.State;
+import States.StateMachine;
 
 public class Farmer {
     // region Farmer Stats
-    private State currentState;
+    private StateMachine stateMachine;
 
     private String Name;
 
@@ -18,23 +21,23 @@ public class Farmer {
     private int PocketMoney = 0;
     private int MaxPocketMoney = 50;
 
+    public StateMachine<Farmer> getStateMachine(){
+        return stateMachine;
+    }
+
     public String getName() { return Name; }
     public int getPocketMoney() { return PocketMoney; }
     // endregion
 
     public Farmer(String name, State currentState) {
         this.Name = name;
-        this.currentState = currentState;
-        currentState.enter(this);
+        stateMachine = new StateMachine<Farmer>(this);
+        stateMachine.setCurrentState(currentState);
+        stateMachine.setGlobalState(FarmerGlobalState.getInstance());
     }
 
     public void changeState(State newState) {
-        currentState.exit(this);
-        currentState = newState;
-        currentState.enter(this);
-    }
-    public void runCurrentState () {
-        currentState.execute(this);
+        stateMachine.changeState(newState);
     }
 
     // region State checkers
@@ -71,6 +74,10 @@ public class Farmer {
         else if (newValue <= 0)
             newValue = 0;
         Fatigue = newValue;
+    }
+
+    public void runCurrentState() {
+        stateMachine.update();
     }
     // endregion
 }

@@ -35,10 +35,10 @@ public class EnterMineAndDigForNugget implements State<Farmer> {
 
         // Check for New State
         if (farmer.isPocketFull() || farmer.isTired())
-            farmer.changeState(VisitBankAndDepositGold.getInstance());
+            farmer.getStateMachine().changeState(VisitBankAndDepositGold.getInstance());
 
         if (farmer.isThirsty())
-            farmer.changeState(QuenchThirst.getInstance());
+            farmer.getStateMachine().changeState(QuenchThirst.getInstance());
     }
 
     public void exit (Farmer farmer) {

@@ -22,9 +22,9 @@ public class VisitBankAndDepositGold implements State<Farmer> {
         farmer.depositGold();
 
         if (farmer.isTired())
-            farmer.changeState(GoHomeAndSleepTilRested.getInstance());
+            farmer.getStateMachine().changeState(GoHomeAndSleepTilRested.getInstance());
         else
-            farmer.changeState(EnterMineAndDigForNugget.getInstance());
+            farmer.getStateMachine().changeState(EnterMineAndDigForNugget.getInstance());
     }
 
     public void exit (Farmer farmer) {

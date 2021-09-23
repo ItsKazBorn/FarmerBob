@@ -23,7 +23,7 @@ public class GoHomeAndSleepTilRested implements State<Farmer> {
         farmer.addFatigue(-5);
 
         if(farmer.isRested())
-            farmer.changeState(EnterMineAndDigForNugget.getInstance());
+            farmer.getStateMachine().changeState(EnterMineAndDigForNugget.getInstance());
     }
 
     public void exit (Farmer farmer) {
