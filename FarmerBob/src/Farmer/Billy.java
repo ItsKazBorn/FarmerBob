@@ -2,6 +2,7 @@ package Farmer;
 
 import States.LookAtTheWeather;
 import States.StateMachine;
+import Global.BillyGlobalState;
 
 public class Billy extends Entity {
 
@@ -13,7 +14,7 @@ public class Billy extends Entity {
 
         stateMachine  = new StateMachine<Billy>(this);
         stateMachine.setCurrentState(LookAtTheWeather.getInstance());
-//        stateMachine.setGlobalState(BillyGlobalState.getInstance());
+        stateMachine.setGlobalState(BillyGlobalState.getInstance());
     }
 
 

@@ -6,15 +6,15 @@ import States.VisitBathroom;
 
 import java.util.Random;
 
-public class FarmerGlobalState implements State<Farmer> {
+public class BobGlobalState implements State<Farmer> {
 
-    private static FarmerGlobalState instance = null;
+    private static BobGlobalState instance = null;
 
-    private FarmerGlobalState(){}
+    private BobGlobalState(){}
 
-    public static FarmerGlobalState getInstance(){
+    public static BobGlobalState getInstance(){
         if (instance == null)
-            instance = new FarmerGlobalState();
+            instance = new BobGlobalState();
         return instance;
     }
 

@@ -1,7 +1,5 @@
 package Farmer;
-import Global.FarmerGlobalState;
-import States.EnterMineAndDigForNugget;
-import States.GoHomeAndSleepTilRested;
+import Global.BobGlobalState;
 import States.State;
 import States.StateMachine;
 
@@ -33,7 +31,7 @@ public class Farmer {
         this.Name = name;
         stateMachine = new StateMachine<Farmer>(this);
         stateMachine.setCurrentState(currentState);
-        stateMachine.setGlobalState(FarmerGlobalState.getInstance());
+        stateMachine.setGlobalState(BobGlobalState.getInstance());
     }
 
     public void changeState(State newState) {

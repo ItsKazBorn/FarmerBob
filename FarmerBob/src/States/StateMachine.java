@@ -1,5 +1,7 @@
 package States;
 
+import Message.Message;
+
 public class StateMachine<NPC> {
 
     private NPC myOwner;
@@ -60,5 +62,17 @@ public class StateMachine<NPC> {
 
     public State<NPC> getPreviousState () {
         return previousState;
+    }
+
+    public  boolean handleMessage (Message msg) {
+        if (currentState.onMessage(myOwner, msg)) {
+            return true;
+        }
+
+        if (globalState  != null && globalState.onMessage(myOwner, msg))  {
+            return true;
+        }
+
+        return false;
     }
 }

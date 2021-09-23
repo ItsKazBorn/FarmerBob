@@ -1,5 +1,6 @@
 package Farmer;
 
+import Message.Message;
 import States.StateMachine;
 
 public abstract class Entity {
@@ -10,7 +11,7 @@ public abstract class Entity {
     public Entity(String name)  {
         this.name  = name;
 
-        //EntityManager.getInstance().registerEntity(this)
+        EntityManager.getInstance().registerEntity(this);
     }
 
     public String getName () {
@@ -18,4 +19,8 @@ public abstract class Entity {
     }
 
     public abstract void update ();
+
+    public boolean handleMessage(Message msg) {
+        return stateMachine.handleMessage(msg);
+    }
 }
