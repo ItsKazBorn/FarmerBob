@@ -28,6 +28,6 @@ public class EntityManager {
     }
 
     public void removeEntity(Entity entity){
-        map.remove(entity.getID());
+        //map.remove(entity.getID());
     }
 }

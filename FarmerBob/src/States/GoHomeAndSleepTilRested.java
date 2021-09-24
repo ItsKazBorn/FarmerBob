@@ -1,5 +1,6 @@
 package States;
-import Farmer.Farmer;
+import Farmer.*;
+import Message.MessageDispatcher;
 
 public class GoHomeAndSleepTilRested implements State<Farmer> {
 
@@ -13,8 +14,12 @@ public class GoHomeAndSleepTilRested implements State<Farmer> {
         return instance;
     }
 
-    public void enter(Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "What a day! Time to hit the hay!");
+    public void enter(Bob bob) {
+        //bob.setLocation("Farm");
+        //bob.setBillyWorked(false);
+
+        Entity billy = EntityManager.getInstance().getEntity("Billy");
+        MessageDispatcher.getInstance().dispatchMessage(bob, billy, "GetToWork!", null);
     }
 
     public void execute (Farmer farmer) {
