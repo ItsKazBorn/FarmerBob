@@ -3,7 +3,7 @@ import Farmer.*;
 import Message.Message;
 import Message.MessageDispatcher;
 
-public class GoHomeAndSleepTilRested implements State<Farmer> {
+public class GoHomeAndSleepTilRested implements State<Bob> {
 
     private static GoHomeAndSleepTilRested instance = null;
 
@@ -15,6 +15,7 @@ public class GoHomeAndSleepTilRested implements State<Farmer> {
         return instance;
     }
 
+    @Override
     public void enter(Bob bob) {
         //bob.setLocation("Farm");
         //bob.setBillyWorked(false);
@@ -23,24 +24,18 @@ public class GoHomeAndSleepTilRested implements State<Farmer> {
         MessageDispatcher.getInstance().dispatchMessage(bob, billy, "GetToWork!", null);
     }
 
-    public void enter(Farmer f) {
+    public void execute (Bob bob) {
+        System.out.println(bob.getName() + " says: " + "zzzzzzzzzz");
 
-    }
+        bob.addFatigue(-5);
 
-    public void execute (Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "zzzzzzzzzz");
-
-        farmer.addFatigue(-5);
-
-        if(farmer.isRested())
-            farmer.getStateMachine().changeState(EnterMineAndDigForNugget.getInstance());
+        if(bob.billyWorked() && bob.isRested())
+            bob.getStateMachine().changeState(EnterMineAndDigForNugget.getInstance());
+        else if (bob.isRested())
+            System.out.println("Waiting this goddamn brother to finish his work...");
     }
 
     public void exit (Farmer farmer) {
         System.out.println(farmer.getName() + " says: " + "Rise and shine!");
-    }
-
-    public boolean onMessage(Farmer farmer, Message msg) {
-        return false;
     }
 }

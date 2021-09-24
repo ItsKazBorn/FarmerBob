@@ -1,8 +1,8 @@
 package States;
-import Farmer.Farmer;
+import Farmer.*;
 import java.util.Random;
 
-public class LookAtTheWeather implements State<Farmer> {
+public class LookAtTheWeather implements State<Bob> {
 
     private static LookAtTheWeather instance = null;
 
@@ -20,13 +20,13 @@ public class LookAtTheWeather implements State<Farmer> {
     }
 
     @Override
-    public void execute(Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "The sky is pretty today!");
+    public void execute(Billy billy) {
+        System.out.println(billy.getName() + " says: " + "The sky is pretty today!");
 
         Random r = new Random();
         int rand = r.nextInt(4);
         if (rand == 1)
-            farmer.getStateMachine().changeState(WalkAroundTheFarm.getInstance());
+            billy.getStateMachine().changeState(WalkAroundTheFarm.getInstance());
     }
 
     @Override
