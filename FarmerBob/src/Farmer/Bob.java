@@ -18,8 +18,6 @@ public class Bob extends Entity {
 
     private boolean billyWorked = false;
 
-    private String location;
-
     public Bob () {
         super("Bob");
         Thirst = 0;

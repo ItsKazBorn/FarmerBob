@@ -16,8 +16,8 @@ public class GoHomeAndSleepTilRested implements State<Bob> {
     }
 
     public void enter(Bob bob) {
-        //bob.setLocation("Farm");
-        //bob.setBillyWorked(false);
+        bob.setLocation("Farm");
+        bob.setBillyWorked(false);
 
         Entity billy = EntityManager.getInstance().getEntity("Billy");
         MessageDispatcher.getInstance().dispatchMessage(bob, billy, "GetToWork!", null);

@@ -6,8 +6,6 @@ import Global.BillyGlobalState;
 
 public class Billy extends Entity {
 
-    private String location;
-
     public Billy () {
         super("Billy");
         location = "Farm";
