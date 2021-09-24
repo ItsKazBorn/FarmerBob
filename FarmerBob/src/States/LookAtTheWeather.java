@@ -1,8 +1,10 @@
 package States;
 import Farmer.*;
+import Message.Message;
+
 import java.util.Random;
 
-public class LookAtTheWeather implements State<Bob> {
+public class LookAtTheWeather implements State<Billy> {
 
     private static LookAtTheWeather instance = null;
 
@@ -15,8 +17,8 @@ public class LookAtTheWeather implements State<Bob> {
     }
 
     @Override
-    public void enter(Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Time to rest and look at the sky...");
+    public void enter(Billy billy) {
+        System.out.println(billy.getName() + " says: " + "Time to rest and look at the sky...");
     }
 
     @Override
@@ -30,7 +32,12 @@ public class LookAtTheWeather implements State<Bob> {
     }
 
     @Override
-    public void exit(Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "That's enough looking for now");
+    public void exit(Billy billy) {
+        System.out.println(billy.getName() + " says: " + "That's enough looking for now");
+    }
+
+    @Override
+    public boolean onMessage(Billy billy, Message msg) {
+        return false;
     }
 }
