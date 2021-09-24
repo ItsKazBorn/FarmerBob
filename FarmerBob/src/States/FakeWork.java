@@ -30,7 +30,7 @@ public class FakeWork implements State<Billy>{
         Random r = new Random();
         int rand = r.nextInt(2);
         if (rand == 1){
-            //Should work or not??
+            System.out.println("Still working...of course!");
         }
         else {
             billy.getStateMachine().changeState(LookAtTheWeather.getInstance());
