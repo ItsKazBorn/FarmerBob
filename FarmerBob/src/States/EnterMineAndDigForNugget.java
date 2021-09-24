@@ -1,8 +1,10 @@
 package States;
-import Farmer.Farmer;
+import Farmer.Bob;
+import Message.Message;
+
 import java.util.Random;
 
-public class EnterMineAndDigForNugget implements State<Farmer> {
+public class EnterMineAndDigForNugget implements State<Bob> {
 
     private static EnterMineAndDigForNugget instance = null;
 
@@ -14,34 +16,39 @@ public class EnterMineAndDigForNugget implements State<Farmer> {
         return instance;
     }
 
-    public void enter(Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Let's go mine");
+    public void enter(Bob bob) {
+        System.out.println(bob.getName() + " says: " + "Let's go mine");
     }
 
-    public void execute (Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Mining away!");
+    public void execute (Bob bob) {
+        System.out.println(bob.getName() + " says: " + "Mining away!");
 
         // Mine
         Random r = new Random();
         int rand = r.nextInt(3);
         if (rand == 1) {
-            System.out.println(farmer.getName() + " says: " + "A gold nugget! So shiny!");
-            farmer.addNugget(1);
+            System.out.println(bob.getName() + " says: " + "A gold nugget! So shiny!");
+            bob.addNugget(1);
         }
 
         // Gain Stats
-        farmer.addFatigue(5);
-        farmer.addThirst(5);
+        bob.addFatigue(5);
+        bob.addThirst(5);
 
         // Check for New State
-        if (farmer.isPocketFull() || farmer.isTired())
-            farmer.getStateMachine().changeState(VisitBankAndDepositGold.getInstance());
+        if (bob.isPocketFull() || bob.isTired())
+            bob.getStateMachine().changeState(VisitBankAndDepositGold.getInstance());
 
-        if (farmer.isThirsty())
-            farmer.getStateMachine().changeState(QuenchThirst.getInstance());
+        if (bob.isThirsty())
+            bob.getStateMachine().changeState(QuenchThirst.getInstance());
     }
 
-    public void exit (Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "That's all for now...");
+    public void exit (Bob bob) {
+        System.out.println(bob.getName() + " says: " + "That's all for now...");
+    }
+
+    @Override
+    public boolean onMessage(Bob bob, Message msg) {
+        return false;
     }
 }

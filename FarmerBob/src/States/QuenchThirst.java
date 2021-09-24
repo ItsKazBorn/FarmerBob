@@ -1,7 +1,8 @@
 package States;
-import Farmer.Farmer;
+import Farmer.Bob;
+import Message.Message;
 
-public class QuenchThirst implements State<Farmer> {
+public class QuenchThirst implements State<Bob> {
 
     private static QuenchThirst instance = null;
 
@@ -13,20 +14,25 @@ public class QuenchThirst implements State<Farmer> {
         return instance;
     }
 
-    public void enter(Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Getting thirst out here... time to hit the bar!");
+    public void enter(Bob bob) {
+        System.out.println(bob.getName() + " says: " + "Getting thirst out here... time to hit the bar!");
     }
 
-    public void execute (Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Bring one more!!");
+    public void execute (Bob bob) {
+        System.out.println(bob.getName() + " says: " + "Bring one more!!");
 
-        farmer.addThirst(-20);
+        bob.addThirst(-20);
 
-        if (farmer.isQuenched())
-            farmer.getStateMachine().changeState(EnterMineAndDigForNugget.getInstance());
+        if (bob.isQuenched())
+            bob.getStateMachine().changeState(EnterMineAndDigForNugget.getInstance());
     }
 
-    public void exit (Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Uff... I'm quenched! Back to work!");
+    public void exit (Bob bob) {
+        System.out.println(bob.getName() + " says: " + "Uff... I'm quenched! Back to work!");
+    }
+
+    @Override
+    public boolean onMessage(Bob bob, Message msg) {
+        return false;
     }
 }

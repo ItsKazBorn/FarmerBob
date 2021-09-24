@@ -1,6 +1,7 @@
 package States;
 
 import Farmer.Farmer;
+import Message.Message;
 
 public class VisitBathroom implements State<Farmer>{
 
@@ -28,5 +29,9 @@ public class VisitBathroom implements State<Farmer>{
     @Override
     public void exit(Farmer f) {
         System.out.println(f.getName() + " says: " + "I think I'm done here!");
+    }
+
+    public boolean onMessage(Farmer f, Message msg) {
+        return false;
     }
 }

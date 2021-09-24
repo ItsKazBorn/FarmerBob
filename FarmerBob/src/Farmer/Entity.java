@@ -24,6 +24,8 @@ public abstract class Entity {
         return name;
     }
 
+    public StateMachine getStateMachine () { return stateMachine; }
+
     public abstract void update ();
 
     public boolean handleMessage(Message msg) {

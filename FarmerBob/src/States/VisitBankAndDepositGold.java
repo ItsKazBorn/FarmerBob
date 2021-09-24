@@ -1,7 +1,8 @@
 package States;
-import Farmer.Farmer;
+import Farmer.Bob;
+import Message.Message;
 
-public class VisitBankAndDepositGold implements State<Farmer> {
+public class VisitBankAndDepositGold implements State<Bob> {
 
     private static VisitBankAndDepositGold instance = null;
 
@@ -13,21 +14,26 @@ public class VisitBankAndDepositGold implements State<Farmer> {
         return instance;
     }
 
-    public void enter(Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Let's save these nuggets in the bank...");
+    public void enter(Bob bob) {
+        System.out.println(bob.getName() + " says: " + "Let's save these nuggets in the bank...");
     }
 
-    public void execute (Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Today I deposited " + farmer.getPocketMoney() + " nuggets");
-        farmer.depositGold();
+    public void execute (Bob bob) {
+        System.out.println(bob.getName() + " says: " + "Today I deposited " + bob.getPocketMoney() + " nuggets");
+        bob.depositGold();
 
-        if (farmer.isTired())
-            farmer.getStateMachine().changeState(GoHomeAndSleepTilRested.getInstance());
+        if (bob.isTired())
+            bob.getStateMachine().changeState(GoHomeAndSleepTilRested.getInstance());
         else
-            farmer.getStateMachine().changeState(EnterMineAndDigForNugget.getInstance());
+            bob.getStateMachine().changeState(EnterMineAndDigForNugget.getInstance());
     }
 
-    public void exit (Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Thanks again for keeping my gold safe!");
+    public void exit (Bob bob) {
+        System.out.println(bob.getName() + " says: " + "Thanks again for keeping my gold safe!");
+    }
+
+
+    public boolean onMessage(Bob bob, Message msg) {
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package States;
 import Farmer.*;
+import Message.Message;
 import Message.MessageDispatcher;
 
 public class GoHomeAndSleepTilRested implements State<Farmer> {
@@ -22,6 +23,10 @@ public class GoHomeAndSleepTilRested implements State<Farmer> {
         MessageDispatcher.getInstance().dispatchMessage(bob, billy, "GetToWork!", null);
     }
 
+    public void enter(Farmer f) {
+
+    }
+
     public void execute (Farmer farmer) {
         System.out.println(farmer.getName() + " says: " + "zzzzzzzzzz");
 
@@ -33,5 +38,9 @@ public class GoHomeAndSleepTilRested implements State<Farmer> {
 
     public void exit (Farmer farmer) {
         System.out.println(farmer.getName() + " says: " + "Rise and shine!");
+    }
+
+    public boolean onMessage(Farmer farmer, Message msg) {
+        return false;
     }
 }
