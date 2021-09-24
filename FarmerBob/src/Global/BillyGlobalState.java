@@ -2,6 +2,7 @@ package Global;
 
 import Farmer.*;
 import Message.Message;
+import States.FakeWork;
 import States.VisitBathroom;
 import States.State;
 
@@ -31,15 +32,19 @@ public class BillyGlobalState implements State<Billy> {
             billy.getStateMachine().changeState(VisitBathroom.getInstance());
     }
 
-    public void exit(Billy f) {
+    @Override
+    public void exit(Farmer f) {
 
     }
 
+    @Override
     public boolean onMessage(Billy billy, Message msg) {
-        if (msg.getMessage().compareTo("GetToWork!") == 0)
+        if (msg.getMessage().compareTo("GetToWork!") == 0) {
             billy.getStateMachine().changeState(FakeWork.getInstance());
             return true;
-        else
+        }
+        else{
             return false;
+        }
     }
 }
