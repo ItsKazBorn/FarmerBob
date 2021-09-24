@@ -7,7 +7,7 @@ import States.State;
 
 import java.util.Random;
 
-public class BillyGlobalState implements State<Farmer> {
+public class BillyGlobalState implements State<Billy> {
 
     private static BillyGlobalState instance = null;
 
@@ -19,25 +19,22 @@ public class BillyGlobalState implements State<Farmer> {
         return instance;
     }
 
-    @Override
-    public void enter(Farmer f) {
+    public void enter(Billy billy) {
 
     }
 
-    public void execute(Farmer f){
+    public void execute(Billy billy) {
         Random r = new Random();
         int rand = r.nextInt(100);
 
         if (rand == 1)
-            f.getStateMachine().changeState(VisitBathroom.getInstance());
+            billy.getStateMachine().changeState(VisitBathroom.getInstance());
     }
 
-    @Override
-    public void exit(Farmer f) {
+    public void exit(Billy f) {
 
     }
 
-    @Override
     public boolean onMessage(Billy billy, Message msg) {
         if (msg.getMessage().compareTo("GetToWork!") == 0)
             billy.getStateMachine().changeState(FakeWork.getInstance());

@@ -15,7 +15,6 @@ public class GoHomeAndSleepTilRested implements State<Bob> {
         return instance;
     }
 
-    @Override
     public void enter(Bob bob) {
         //bob.setLocation("Farm");
         //bob.setBillyWorked(false);
@@ -35,7 +34,11 @@ public class GoHomeAndSleepTilRested implements State<Bob> {
             System.out.println("Waiting this goddamn brother to finish his work...");
     }
 
-    public void exit (Farmer farmer) {
-        System.out.println(farmer.getName() + " says: " + "Rise and shine!");
+    public void exit (Bob bob) {
+        System.out.println(bob.getName() + " says: " + "Rise and shine!");
+    }
+
+    public boolean onMessage(Bob bob, Message msg) {
+        return false;
     }
 }
