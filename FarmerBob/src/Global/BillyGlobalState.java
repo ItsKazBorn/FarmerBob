@@ -33,7 +33,12 @@ public class BillyGlobalState implements State<Billy> {
     }
 
     @Override
-    public void exit(Farmer f) {
+    public void exit(Billy billy) {
+
+    }
+
+    @Override
+    public void exit(Billy billy) {
 
     }
 
