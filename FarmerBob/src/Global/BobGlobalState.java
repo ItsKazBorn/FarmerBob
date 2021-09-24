@@ -1,12 +1,13 @@
 package Global;
 
-import Farmer.Farmer;
+import Farmer.Bob;
+import Message.Message;
 import States.State;
 import States.VisitBathroom;
 
 import java.util.Random;
 
-public class BobGlobalState implements State<Farmer> {
+public class BobGlobalState implements State<Bob> {
 
     private static BobGlobalState instance = null;
 
@@ -19,20 +20,29 @@ public class BobGlobalState implements State<Farmer> {
     }
 
     @Override
-    public void enter(Farmer f) {
+    public void enter(Bob bob) {
 
     }
 
-    public void execute(Farmer f){
+    public void execute(Bob bob){
         Random r = new Random();
         int rand = r.nextInt(100);
 
         if (rand == 1)
-            f.getStateMachine().changeState(VisitBathroom.getInstance());
+            bob.getStateMachine().changeState(VisitBathroom.getInstance());
     }
 
     @Override
-    public void exit(Farmer f) {
+    public void exit(Bob bob) {
 
+    }
+
+    @Override
+    public boolean onMessage(Bob bob, Message msg) {
+        if  (msg.getMessage().compareToIgnoreCase("JobsDone!")==0) {
+            bob.setBillyWorked(true);
+            return true;
+        }
+        return false;
     }
 }

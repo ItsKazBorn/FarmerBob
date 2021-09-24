@@ -16,6 +16,8 @@ public class Bob extends Entity {
     private int PocketMoney = 0;
     private int MaxPocketMoney = 50;
 
+    private boolean billyWorked = false;
+
     private String location;
 
     public Bob () {
@@ -34,6 +36,11 @@ public class Bob extends Entity {
     @Override
     public void update() {
         stateMachine.update();
+    }
+
+    public boolean billyWorked() { return billyWorked; }
+    public void setBillyWorked(boolean billyWorked) {
+        this.billyWorked = billyWorked;
     }
 
     public int getPocketMoney() { return PocketMoney; }
