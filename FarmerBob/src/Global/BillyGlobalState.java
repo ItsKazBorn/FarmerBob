@@ -35,7 +35,8 @@ public class BillyGlobalState implements State<Billy> {
     public void exit(Billy billy) {
 
     }
-    
+
+    @Override
     public boolean onMessage(Billy billy, Message msg) {
         if (msg.getMessage().compareTo("GetToWork!") == 0) {
             billy.getStateMachine().changeState(FakeWork.getInstance());
