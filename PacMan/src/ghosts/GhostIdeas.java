@@ -19,8 +19,8 @@ public class GhostIdeas {
         - Quando o PacMan está numa linha direta de visão do DASHER, o DASHER da um dash na direção do Pac Man
         - o DASHER não muda de direção: ele continua se movimentando numa linha reta até bater em uma parede
 
-        4 -> CAMPER GHOST - Kaz
-        - Ele faz patrol entre as comidinhas
+        4 -> CAMPER GHOST - Kaz (Virou PatrolGhost)
+        - Anda fazendo um circulo no mapa (patrol)
         - Caso sobre só uma comidinha, ele campa ela
         - Persegue o player se o player chegar perto da ultima comidinha
      */
