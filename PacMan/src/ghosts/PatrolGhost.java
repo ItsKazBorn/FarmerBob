@@ -6,6 +6,7 @@ import pacman.Location;
 import pacman.Move;
 import pacman.State;
 
+import java.awt.*;
 import java.util.List;
 
 public class PatrolGhost extends GhostPlayer {
@@ -15,9 +16,13 @@ public class PatrolGhost extends GhostPlayer {
 
     private Location[] patrolPoints;
 
+
+
     @Override
     public Move chooseMove(Game game, int ghostIndex)
     {
+        ConfigureColor(Color.gray);
+
         getPatrolPoints();
         State s = game.getCurrentState();
         Location oldLoc = s.getGhostLocations().get(ghostIndex);
@@ -78,6 +83,12 @@ public class PatrolGhost extends GhostPlayer {
         lastMove = bestMove;
 
         return bestMove;
+    }
+
+    private void ConfigureColor (Color color) {
+        if (getColor() != color) {
+            setColor(color);
+        }
     }
 }
 
