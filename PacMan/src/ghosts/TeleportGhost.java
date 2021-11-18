@@ -60,6 +60,7 @@ public class TeleportGhost extends GhostPlayer {
         {
             if (ghostLocation.equals(teleportPoints[i]))
             {
+                //TELEPORT TO SOME POINT IN THE MAP
                 nextLocation = new Location(0, 0);
                 if (i == teleportPoints.length-1)
                 {

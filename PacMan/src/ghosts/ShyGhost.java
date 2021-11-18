@@ -29,7 +29,6 @@ public class ShyGhost extends GhostPlayer {
         double[] distances = new double[moves.size()];
         for (int i=0; i<distances.length; i++) {
             Location newLoc = Game.getNextLocation(state.getGhostLocations().get(ghostIndex), moves.get(i));
-            System.out.println("Current Location: " + newLoc);
             distances[i] = Location.euclideanDistance(pacManLocation, newLoc);
         }
         int moveIndex = Utils.argmin(distances);
