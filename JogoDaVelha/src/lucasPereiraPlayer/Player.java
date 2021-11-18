@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Lucas Pereira da Silva
+ * @author Lucas Pereira da Silva & Kaz Born
  */
 public class Player extends AbstractPlayer {
 
@@ -30,12 +30,29 @@ public class Player extends AbstractPlayer {
         List<Jogada> minhasJogadas =  copyJogo.getJogadasValidas(tab, getMinhaMarcaTabuleiro());
         List<Jogada> oponenteJogadas = copyJogo.getJogadasValidas(tab, getMarcaTabuleiroOponente());
 
-        for (int i = 0; i < minhasJogadas.size(); i++){
-            for (int j = 0; j < oponenteJogadas.size(); j++){
+        Jogada melhorJogada = minhasJogadas.get(0);
 
-            }
+        for (int i = 0; i < minhasJogadas.size(); i++){
+            JogoVelha test = copyJogo;
+            test.efetuar_jogada(tab, minhasJogadas.get(0).getCasa(), this);
+
+
+
+
+
         }
 
         return minhasJogadas.get(0).getCasa();
     }
+
+    private int testJogada (int[][] tab, Jogada jogada) {
+        var testJogo = getJogo();
+        testJogo.efetuar_jogada(tab, jogada.getCasa(), this);
+        
+
+
+        return 0;
+    }
+
+
 }
