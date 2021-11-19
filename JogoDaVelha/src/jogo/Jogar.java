@@ -27,13 +27,13 @@ public class Jogar {
 		jogo = new JogoVelha();
 
 		//TODO: Define a classe utilizado pelo Player 1:
-		player = new lucasPereiraPlayer.Player(-1);
+		player = new humanPlayer.Player(2);
 		player.setMinhaMarcaTabuleiro(X);
 		player.setJogo(jogo);
 		player.setMarcaTabuleiroOponente(O);
 
 		//TODO: Defnine a classe utilizado pelo Player 2:
-		player2 = new humanPlayer.Player(-1);
+		player2 = new lucasPereiraPlayer.Player(2);
 		player2.setMinhaMarcaTabuleiro(O);
 		player2.setMarcaTabuleiroOponente(X);
 		player2.setJogo(jogo);
