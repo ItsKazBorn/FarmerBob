@@ -21,7 +21,7 @@ public class MinMaxPlayer extends AbstractPlayer {
 
 
 
-
+        return null;
     }
 
 

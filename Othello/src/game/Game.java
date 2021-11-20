@@ -40,7 +40,7 @@ public class Game {
             case 0:
                 game = new OthelloGame();
                 //Define player 1 class
-                player = new RandomPlayer(2);
+                player = new GulosoPlayer(2);
                 player.setBoardMark(X);
                 player.setOpponentBoardMark(O);
                 player.setGame(game);
