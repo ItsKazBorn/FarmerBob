@@ -32,8 +32,8 @@ public class MinMaxPlayer extends AbstractPlayer {
     private void Depth (int depth, Move move, int[][] tab) {
         System.out.println("Depth: " + depth + "/" + getDepth());
         OthelloGame game = new OthelloGame();
-        if (depth >= getDepth() || game.noSpace(tab)) {
-            System.out.println("Depth Reached");
+        if (depth > getDepth() || game.noSpace(tab)) {
+            System.out.println("Depth Reached 1");
             return;  // Check MINMAX
         }
         else {
@@ -48,7 +48,7 @@ public class MinMaxPlayer extends AbstractPlayer {
                     }
                 }
                 else {
-                    System.out.println("Depth Reached");
+                    System.out.println("Depth Reached 2");
                     return; //
                 }
             }
@@ -63,7 +63,7 @@ public class MinMaxPlayer extends AbstractPlayer {
                     }
                 }
                 else {
-                    System.out.println("Depth Reached");
+                    System.out.println("Depth Reached 3");
                     return; //
                 }
             }
