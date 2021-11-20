@@ -7,19 +7,23 @@ import game.OthelloGame;
 
 import java.util.List;
 
-public class Player extends AbstractPlayer {
+public class MinMaxPlayer extends AbstractPlayer {
 
-    public Player(int depth) {
+    public MinMaxPlayer(int depth) {
         super(depth);
     }
 
     @Override
     public BoardSquare play(int[][] tab) {
+        OthelloGame game = new OthelloGame();
 
-        OthelloGame jogo = new OthelloGame();
+        List<Move> moves = game.getValidMoves(tab, getMyBoardMark());
 
-        List<Move> jogadas = jogo.getValidMoves(tab, getMyBoardMark());
 
-        return jogadas.get(0).getBardPlace();
+
+
     }
+
+
+
 }

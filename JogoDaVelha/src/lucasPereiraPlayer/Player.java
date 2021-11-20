@@ -26,7 +26,6 @@ public class Player extends AbstractPlayer {
         var copyJogo = jogo;
 
         List<Jogada> minhasJogadas =  copyJogo.getJogadasValidas(tab, getMinhaMarcaTabuleiro());
-        List<Jogada> oponenteJogadas = copyJogo.getJogadasValidas(tab, getMarcaTabuleiroOponente());
 
         Jogada melhorJogada = minhasJogadas.get(0);
         int bestMinMax = 0;
@@ -42,15 +41,6 @@ public class Player extends AbstractPlayer {
         }
 
         return melhorJogada.getCasa();
-    }
-
-    private int testJogada (int[][] tab, Jogada jogada) {
-        var testJogo = getJogo();
-        testJogo.efetuar_jogada(tab, jogada.getCasa(), this);
-
-
-
-        return 0;
     }
 
     private int CheckMinMax (AbstractJogo jogoVelha, int[][] tabOriginal, Jogada jogada) {

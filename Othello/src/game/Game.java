@@ -1,6 +1,7 @@
 package game;
 
 import display.Display;
+import lucasPereiraPlayer.GulosoPlayer;
 import players.HumanPlayer;
 import players.RandomPlayer;
 
@@ -45,9 +46,9 @@ public class Game {
                 player.setGame(game);
                 //Define player 2 class
                 if (displayOtello != null) {
-                    player2 = new lucasPereiraPlayer.Player(2);
+                    player2 = new GulosoPlayer(2);
                 } else {
-                    player2 = new lucasPereiraPlayer.Player(2);
+                    player2 = new GulosoPlayer(2);
                 }
                 player2.setBoardMark(O);
                 player2.setOpponentBoardMark(X);
