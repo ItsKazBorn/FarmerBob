@@ -22,7 +22,8 @@ public class MinMaxPlayer extends AbstractPlayer {
         Move bestMove = moves.get(0);
 
         for (Move move: moves) {
-            Depth(0, move, tab);
+            System.out.println("  >>---> Start Depth");
+            Depth(0, move, CloneTab(tab));
         }
 
 
