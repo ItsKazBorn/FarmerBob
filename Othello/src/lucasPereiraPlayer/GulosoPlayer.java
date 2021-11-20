@@ -28,9 +28,7 @@ public class GulosoPlayer extends AbstractPlayer {
                 bestScore = score;
             }
         }
-
-        System.out.println(bestMove.getBardPlace().getCol());
-        System.out.println(bestMove.getBardPlace().getRow());
+        
         return bestMove.getBardPlace();
     }
 

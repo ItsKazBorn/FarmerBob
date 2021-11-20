@@ -4,6 +4,7 @@ import game.AbstractPlayer;
 import game.BoardSquare;
 import game.Move;
 import game.OthelloGame;
+import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.List;
 
@@ -20,55 +21,91 @@ public class MinMaxPlayer extends AbstractPlayer {
         List<Move> moves = game.getValidMoves(tab, getMyBoardMark());
 
         Move bestMove = moves.get(0);
+        int bestMinMax = -9999999;
 
         for (Move move: moves) {
             System.out.println("  >>---> Start Depth");
-            Depth(0, move, CloneTab(tab));
+            int minmax = Depth(0,0, move, CloneTab(tab));
+            System.out.println(" >>---> End Depth");
+            System.out.println("MinMax: " + minmax);
+            if (minmax > bestMinMax) {
+                bestMove = move;
+                bestMinMax = minmax;
+            }
         }
 
-
-        return null;
+        System.out.println("------------------------");
+        System.out.println("Best Min Max: " + bestMinMax);
+        return bestMove.getBardPlace();
     }
 
-    private void Depth (int depth, Move move, int[][] tab) {
-        System.out.println("Depth: " + depth + "/" + getDepth());
+    private int Depth (int currentMinMax, int depth, Move move, int[][] tab) {
         OthelloGame game = new OthelloGame();
         if (depth > getDepth() || game.noSpace(tab)) {
-            System.out.println("Depth Reached 1");
-            return;  // Check MINMAX
+            int score = CheckMinMax(tab);
+            currentMinMax += score;
+            System.out.println("Score: " + score);
+            System.out.println("CurrentMinMax: " + currentMinMax);
+            return currentMinMax;
         }
         else {
             if (depth % 2 == 0) {
-                System.out.println("Making my move");
                 tab = do_move(tab, move.getBardPlace(), getMyBoardMark());
 
                 if (depth+1 <= getDepth()) {
                     List<Move> moves = game.getValidMoves(tab, getOpponentBoardMark());
                     for (Move newMove: moves) {
-                        Depth(depth+1, newMove, tab);
+                        currentMinMax = Depth(currentMinMax, depth+1, newMove, tab);
                     }
                 }
                 else {
-                    System.out.println("Depth Reached 2");
-                    return; //
+                    int score = CheckMinMax(tab);
+                    currentMinMax += score;
+                    System.out.println("Score: " + score);
+                    System.out.println("CurrentMinMax: " + currentMinMax);
+                    return score;
                 }
             }
             else {
-                System.out.println("Making opponent move");
                 tab = do_move(tab, move.getBardPlace(), getOpponentBoardMark());
 
                 if (depth+1 <= getDepth()) {
                     List<Move> moves = game.getValidMoves(tab, getMyBoardMark());
                     for (Move newMove: moves) {
-                        Depth(depth+1, newMove, tab);
+                        currentMinMax += Depth(currentMinMax, depth+1, newMove, tab);
                     }
                 }
                 else {
-                    System.out.println("Depth Reached 3");
-                    return; //
+                    int score = CheckMinMax(tab);
+                    currentMinMax += score;
+                    System.out.println("Score: " + score);
+                    System.out.println("CurrentMinMax: " + currentMinMax);
+                    return score;
                 }
             }
         }
+        return currentMinMax;
+    }
+
+    public int CheckMinMax(int[][] tab) {
+        OthelloGame game = new OthelloGame();
+        int mine = 0;
+        int oppo = 0;
+
+        for (int row = 0; row < game.size; row++) {
+            for (int col = 0; col < game.size; col++) {
+                if (tab[row][col] == getMyBoardMark()) {
+                    mine++;
+                }
+                if (tab[row][col] == getOpponentBoardMark()) {
+                    oppo++;
+                }
+            }
+        }
+
+        if (mine > oppo) { return 1; }
+        else if (mine < oppo) { return -1; }
+        else { return 0; }
     }
 
     private int[][] Domove (int[][] tabOriginal, Move move, int boardMark) {
