@@ -22,13 +22,36 @@ public class MinMaxPlayer extends AbstractPlayer {
 
         Move bestMove = moves.get(0);
         int bestMinMax = -9999999;
+        boolean isCorner = false;
 
         for (Move move: moves) {
             System.out.println("  >>---> Start Depth");
             int minmax = Depth(0,0, move, CloneTab(tab));
             System.out.println(" >>---> End Depth");
             System.out.println("MinMax: " + minmax);
-            if (minmax > bestMinMax) {
+
+            if (move.getBardPlace().getCol() == 0){
+                if(move.getBardPlace().getRow() == 0){
+                    isCorner = true;
+                    bestMove = move;
+                }
+                else if (move.getBardPlace().getRow() == tab.length - 1){
+                    isCorner = true;
+                    bestMove = move;
+                }
+            }
+            else if (move.getBardPlace().getCol() == tab[0].length - 1){
+                if(move.getBardPlace().getRow() == 0){
+                    isCorner = true;
+                    bestMove = move;
+                }
+                else if (move.getBardPlace().getRow() == tab.length-1){
+                    isCorner = true;
+                    bestMove = move;
+                }
+            }
+
+            if (minmax > bestMinMax && !isCorner) {
                 bestMove = move;
                 bestMinMax = minmax;
             }
