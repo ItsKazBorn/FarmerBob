@@ -21,11 +21,34 @@ public class GulosoPlayer extends AbstractPlayer {
         Move bestMove = moves.get(0);
         int bestScore = 0;
 
+        boolean isCorner = false;
+
         for (Move move: moves) {
             System.out.println("Checking move");
             int score = CheckScore(tab, move);
 
-            if (score > bestScore) {
+            if (move.getBardPlace().getCol() == 0){
+                if(move.getBardPlace().getRow() == 0){
+                    isCorner = true;
+                    bestMove = move;
+                }
+                else if (move.getBardPlace().getRow() == tab.length - 1){
+                    isCorner = true;
+                    bestMove = move;
+                }
+            }
+            else if (move.getBardPlace().getCol() == tab[0].length - 1){
+                if(move.getBardPlace().getRow() == 0){
+                    isCorner = true;
+                    bestMove = move;
+                }
+                else if (move.getBardPlace().getRow() == tab.length-1){
+                    isCorner = true;
+                    bestMove = move;
+                }
+            }
+
+            if (score > bestScore && !isCorner) {
                 System.out.println("Is Best Move");
                 bestMove = move;
                 bestScore = score;
