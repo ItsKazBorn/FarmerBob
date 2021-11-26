@@ -3,7 +3,6 @@ package game;
 import display.Display;
 import lucasPereiraPlayer.*;
 import players.HumanPlayer;
-import players.RandomPlayer;
 
 import java.util.List;
 
@@ -40,15 +39,15 @@ public class Game {
             case 0:
                 game = new OthelloGame();
                 //Define player 1 class
-                player = new GulosoPlayer(2);
+                player = new MinMaxPlayer(10);
                 player.setBoardMark(X);
                 player.setOpponentBoardMark(O);
                 player.setGame(game);
                 //Define player 2 class
                 if (displayOtello != null) {
-                    player2 = new MinMaxPlayer(2);
+                    player2 = new MinMaxPlayerWithoutCorner(2);
                 } else {
-                    player2 = new MinMaxPlayer(2);
+                    player2 = new MinMaxPlayerWithoutCorner(2);
                 }
                 player2.setBoardMark(O);
                 player2.setOpponentBoardMark(X);

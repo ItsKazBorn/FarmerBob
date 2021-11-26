@@ -4,12 +4,13 @@ import game.AbstractPlayer;
 import game.BoardSquare;
 import game.Move;
 import game.OthelloGame;
+import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.List;
 
-public class MinMaxPlayer extends AbstractPlayer {
+public class MinMaxPlayerWithoutCorner extends AbstractPlayer {
 
-    public MinMaxPlayer(int depth) {
+    public MinMaxPlayerWithoutCorner(int depth) {
         super(depth);
     }
 
@@ -29,28 +30,7 @@ public class MinMaxPlayer extends AbstractPlayer {
             System.out.println(" >>---> End Depth");
             System.out.println("MinMax: " + minmax);
 
-            if (move.getBardPlace().getCol() == 0){
-                if(move.getBardPlace().getRow() == 0){
-                    isCorner = true;
-                    bestMove = move;
-                }
-                else if (move.getBardPlace().getRow() == tab.length - 1){
-                    isCorner = true;
-                    bestMove = move;
-                }
-            }
-            else if (move.getBardPlace().getCol() == tab[0].length - 1){
-                if(move.getBardPlace().getRow() == 0){
-                    isCorner = true;
-                    bestMove = move;
-                }
-                else if (move.getBardPlace().getRow() == tab.length-1){
-                    isCorner = true;
-                    bestMove = move;
-                }
-            }
-
-            if (minmax > bestMinMax && !isCorner) {
+            if (minmax > bestMinMax) {
                 bestMove = move;
                 bestMinMax = minmax;
             }
